@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Logged in</title>
+    </head>
+    <body onload="onPageLoad()">
+        <div class="container">
+            <div class="navbar">
+                <img src="image/logo.png" class="logo">
+                <nav>
+                </nav>
+            </div>
+        </div>      
+
+
+            <div id="cover" class ="cover">
+                <div class="navi">
+                    Welcome to your Spotify
+                </div>
+                <div class="toggle">
+                    <div class="single">
+                        <button id="single-btn" class="single-btn" onclick="getSongs()">
+                            Recommendes Songs
+                        </button>
+                    </div>
+                    <div class="artist">
+                        <button id="artist-btn" class="artist-btn" onclick="getArtist()">
+                            Recommendes Artist
+                        </button>
+                    </div>
+                </div>
+                <div id="API" class="API">
+                    <div class ="list">
+                        <ol id="list" class="results">
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <script src="js/java.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,63 @@
+/* Apply styles to the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #FF0000, #000000); /* Red to Black Gradient */
+    color: white;
+}
+
+/* Style the h1 heading */
+h1 {
+    text-align: center;
+    margin: 40px 0;
+}
+
+/* Style the form and center it on the page */
+#emotion-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the file input */
+#image-input {
+    border: none;
+    background: #333;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border-radius: 5px;
+}
+
+/* Style the Analyze Emotion button */
+#emotion-form button {
+    border: none;
+    background: linear-gradient(to bottom, #FF0000, #B80000); /* Red to Dark Red Gradient */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+/* Change button background on hover */
+#emotion-form button:hover {
+    background: linear-gradient(to bottom, #B80000, #FF0000); /* Dark Red to Red Gradient */
+    transform: scale(1.05);
+}
+
+/* Style the results div */
+#emotion-results {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style paragraphs inside the results div */
+#emotion-results p {
+    font-size: 18px;
+    margin: 10px 0;
+}

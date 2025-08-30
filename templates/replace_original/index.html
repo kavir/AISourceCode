@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DJoz Template">
+    <meta name="keywords" content="DJoz, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sentisymphonics</title>
+    <style>
+        
+
+
+
+
+
+
+
+        #drawer-toggle { 
+            position: absolute; 
+            opacity: 0; 
+        }
+        .profile-info {
+            text-align: center;
+            color: white;
+        }
+
+        .profile-info h4 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color:white
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color:white
+
+        }
+            
+            #drawer-toggle-label { 
+            -webkit-touch-callout: none; 
+            -webkit-user-select: none; 
+            -khtml-user-select: none; 
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+            left: 0px; 
+            height:50px; 
+            width: 50px; 
+            display: block; 
+            position: fixed; 
+            background: rgba(255,255,255,.0); 
+            z-index: 1; 
+            } 
+            
+            /* adds our "hamburger" menu icon */ 
+            
+            #drawer-toggle-label:before { 
+            content: ''; 
+            display: block; 
+            position: absolute; 
+            height: 2px; 
+            width: 24px; 
+            background: #8d8d8d; 
+            left: 13px; 
+            top: 18px; 
+            box-shadow: 0 6px 0 #8d8d8d, 0 12px 0 #8d8d8d; 
+            } 
+            
+            
+            
+            /* drawer menu pane - note the 0px width */ 
+            
+            #drawer { 
+            position: fixed; 
+            top: 0; 
+            left:-300px; 
+            height: 100%; 
+            width: 300px; 
+            background: #2f2f2f; 
+            overflow-x: hidden; 
+            overflow-y: scroll; 
+            padding: 20px; 
+            -webkit-overflow-scrolling: touch; 
+            } 
+            
+            /* actual page content pane */ 
+            
+            #page-content { 
+            margin-left: 0px; 
+            margin-top: 50px; 
+            width: 100%; 
+            height: calc(100% - 50px); 
+            overflow-x:hidden; 
+            overflow-y:scroll; 
+            -webkit-overflow-scrolling: touch; 
+            padding: 20px; 
+            }
+            
+            /* checked styles (menu open state) */ 
+            
+            #drawer-toggle:checked ~ #drawer-toggle-label { 
+            height: 100%; 
+            width: calc(100% - 300px); 
+            background: rgba(255,255,255,.8); 
+            } 
+            
+            #drawer-toggle:checked ~ #drawer-toggle-label, 
+            #drawer-toggle:checked ~ header { 
+            left: 300px; 
+            } 
+            
+            #drawer-toggle:checked ~ #drawer { 
+            left: 0px; 
+            } 
+            
+            #drawer-toggle:checked ~ #page-content { 
+            margin-left: 300px; 
+            }
+            
+            /* Menu item styles */ 
+            
+            #drawer ul { 
+            list-style-type:none; 
+            } 
+            
+            #drawer ul a { 
+            display:block; 
+            padding:10px; 
+            color:#c7c7c7; 
+            text-decoration:none; 
+            } 
+            
+            #drawer ul a:hover { 
+            color:white; 
+            } 
+            
+            /* Responsive MQ */ 
+            
+            @media all and (max-width:350px) { 
+            
+            #drawer-toggle:checked ~ #drawer-toggle-label { 
+            height: 100%; 
+            width: 50px; 
+            } 
+            
+            #drawer-toggle:checked ~ #drawer-toggle-label, 
+            #drawer-toggle:checked ~ header { 
+            left: calc(100% - 50px); 
+            } 
+            
+            #drawer-toggle:checked ~ #drawer { 
+            width: calc(100% - 50px); 
+            padding: 20px; 
+            } 
+            
+            #drawer-toggle:checked ~ #page-content { 
+            margin-left: calc(100% - 50px); 
+            } 
+            
+            }
+        
+    </style>
+    <script>
+        function toggleUserProfile() {
+            var userProfileCard = document.getElementById("userProfileCard");
+            userProfileCard.style.display = (userProfileCard.style.display === "none") ? "block" : "none";
+        }
+    </script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="static/css/design.css"> -->
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/barfiller.css">
+    <link rel="stylesheet" href="static/css/nowfont.css">
+    <link rel="stylesheet" href="static/css/rockville.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/slicknav.min.css">
+    <link rel="stylesheet" href="static/css/designn.css">
+    
+
+</head>
+
+<body>
+    <!-- <img src="img/Background.jpg" alt=""> -->
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <!-- Header Section Begin -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                
+
+            <div class="col-lg-10 col-md-10">
+                <div class="header__nav">
+                    <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+                    <label for="drawer-toggle" id="drawer-toggle-label"></label>
+                    <nav class="header__menu mobile-menu" , id="drawer">
+                       
+                        <div class="profile-info">
+                            <h4>{{user[1]}}</h4>
+                            <p>{{user[2]}}</p>
+                        </div>
+                        <ul style="list-style-type: none">
+                            <li class="active" ><a href="index.html">Home</a></li>
+                            <li><a href="/profile"  style="color: white;">Profile</a></li>
+                            <li><a href="/contact"  style="color: white;">Contact</a></li>
+                            <li><a href="/video"  style="color: white;">Video</a></li>
+                            <li><a href="/logout" style="color: white;">Logout</a></li>
+                        </ul>
+                        
+                    </nav>
+                    
+                    <!-- Add the user profile information -->
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- Header Section End -->
+
+
+    <!-- Hero Section Begin -->
+    <section class="hero spad set-bg" data-setbg="static/img/hero-bg.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero__text">
+                        <span>New single</span>
+                        <h1>Recommend songs: </h1>
+                        <h3 style="color:white; size: 40px;">DETECTED EMOTION</h3>
+                    <div id="detected-emotion" style="color:skyblue">
+                    <!-- Emotion will be displayed here -->
+                        </div>
+                        <br>
+                        <div id="container">
+                            <img src="{{ url_for('video') }}" width="30%" height="30%" style="border: 5px solid white;" alt="">
+                        </div>
+                        
+                        <h3 style="color:white">RECOMMENDED MUSIC</h3>
+                        <div id="music-recommendations" style="
+                        color:white;
+                    
+                        ">
+                            <!-- Music Recommendations will be displayed here -->
+                        </div>
+                        <h1>Evaluate Model</h1>
+
+<div id="evaluationResults"></div>
+
+<div id="evaluationResults"></div>
+
+<script>
+    // Function to fetch and display evaluation results
+    function evaluateAccuracy() {
+        // Display a message indicating that the accuracy calculation is in progress
+        const evaluationResultsDiv = document.getElementById('evaluationResults');
+        evaluationResultsDiv.innerHTML = '<p>Evaluating accuracy...</p>';
+
+        fetch('/evaluate_accuracy')
+        .then(response => response.json())
+        .then(data => {
+            // Display the evaluation results
+            evaluationResultsDiv.innerHTML = `
+                <p>Test Loss: ${data.test_loss}</p>
+                <p>Test Accuracy: ${data.test_accuracy.toFixed(2)}%</p>
+            `;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Display an error message if there's an error
+            evaluationResultsDiv.innerHTML = '<p>Error fetching evaluation results</p>';
+        });
+    }
+
+    // Function to continuously monitor the emotion change and trigger accuracy evaluation
+    function monitorEmotionChange() {
+        // Implement your logic to monitor emotion change here
+        // For example, you can use setInterval to periodically check for changes
+
+        // Call the evaluateAccuracy function whenever the emotion changes
+        evaluateAccuracy();
+    }
+
+    // Call the monitorEmotionChange function when the page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        monitorEmotionChange();
+    });
+</script>
+
+
+                        
+                        <!-- <div id="emotion-results"> -->
+                            <!-- Emxotion and Music Recommendations will be displayed here -->
+                        <!-- </div> -->
+                        
+                        <script src="{{ url_for('static', filename='js/emotion.js') }}"></script>
+
+                        <!-- <div class="col-lg-12"> -->
+                            <!-- <button class="play-btn video-popup"onclick="recommendMusicBasedOnEmotion()"><i class="fa fa-play"></i></button> -->
+                            <!-- Audio element to play the selected happy song -->
+                            <!-- <audio id="Audio1" controls style="display: none;"></audio> -->
+                            <!-- </div> -->
+                        <!-- </div> -->
+            <div class="row justify-content-center">
+                <div class="col-lg-7 p-0">
+                    <div class="track__content nice-scroll">
+                        <div class="single_player_container">
+                            <div class="col-lg-12">
+                            <button class="play-btn video-popup"onclick="recommendMusicBasedOnEmotion()"><i class="fa fa-play"></i></button>
+                            <!-- Audio element to play the selected happy song -->
+                            <audio id="Audio1" controls style="display: none;"></audio>
+                            </div>
+                            
+                        </div>
+                                    
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="linear__icon">
+            <i class="fa fa-angle-double-down"></i>
+        </div>
+    </section>
+    <script>
+        function selectHappy() {
+        alert("You want to listen HAPPY songs?");
+        
+        // Array of local audio file paths
+        var audioFiles = [
+            "{{ url_for('static', filename='music-files/happy/1.mp3') }}",
+            "{{ url_for('static', filename='music-files/happy/2.mp3') }}",
+            "{{ url_for('static', filename='music-files/happy/3.mp3') }}"
+        ];
+
+        // Generate a random index
+        var randomIndex = Math.floor(Math.random() * audioFiles.length);
+
+        // Get the random audio file path
+        var randomAudioFile = audioFiles[randomIndex];
+
+        // Get the audio element
+        var audio = document.getElementById("Audio1");
+
+        // Set the source of the audio element
+        audio.src = randomAudioFile;
+
+        // Play the audio
+        audio.play();
+    }
+    function selectSad() {
+        alert("You want to listen SAD songs?");
+        
+        // Array of local audio file paths
+        var audioFiles = [
+            "{{ url_for('static', filename='music-files/sad/1.mp3') }}",
+            "{{ url_for('static', filename='music-files/sad/2.mp3') }}",
+            // "{{ url_for('static', filename='music-files/sad/3.mp3') }}"
+            // Add more paths as needed
+        ];
+
+        // Generate a random index
+        var randomIndex = Math.floor(Math.random() * audioFiles.length);
+
+        // Get the random audio file path
+        var randomAudioFile = audioFiles[randomIndex];
+
+        // Get the audio element
+        var audio = document.getElementById("Audio1");
+
+        // Set the source of the audio element
+        audio.src = randomAudioFile;
+
+        // Play the audio
+        audio.play();
+    }
+    function selectEnergetic() {
+        alert("You want to listen ENERGETIC songs?");
+        
+        // Array of local audio file paths
+        var audioFiles = [
+            "{{ url_for('static', filename='music-files/happy/1.mp3') }}",
+            "{{ url_for('static', filename='music-files/happy/2.mp3') }}",
+            // "{{ url_for('static', filename='music-files/happy/3.mp3') }}"
+            // Add more paths as needed
+        ];
+
+       // Generate a random index
+       var randomIndex = Math.floor(Math.random() * audioFiles.length);
+
+// Get the random audio file path
+var randomAudioFile = audioFiles[randomIndex];
+
+// Get the audio element
+var audio = document.getElementById("Audio1");
+
+// Set the source of the audio element
+audio.src = randomAudioFile;
+
+// Play the audio
+audio.play();
+    }
+    function selectCalm() {
+        alert("You want to listen CALM songs?");
+        
+        // Array of local audio file paths
+        var audioFiles = [
+            "{{ url_for('static', filename='music-files/happy/1.mp3') }}",
+            "{{ url_for('static', filename='music-files/happy/2.mp3') }}",
+            "{{ url_for('static', filename='music-files/happy/3.mp3') }}"
+            // Add more paths as needed
+
+        ];
+
+        // Generate a random index
+        var randomIndex = Math.floor(Math.random() * audioFiles.length);
+
+        // Get the random audio file path
+        var randomAudioFile = audioFiles[randomIndex];
+
+        // Get the audio element
+        var audio = document.getElementById("Audio1");
+
+        // Set the source of the audio element
+        audio.src = randomAudioFile;
+
+        // Play the audio
+        audio.play();
+    }
+
+
+
+
+    </script>
+    
+    <!-- Hero Section End -->
+
+    <!-- Event Section Begin -->
+    <section class="event spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Upcoming SONGS WITH MOODS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="event__slider owl-carousel">
+                    <div class="col-lg-4">
+                        <div class="event__item">
+                            <div class="event__item__pic set-bg" data-setbg="static/img/events/event-1.jpg">
+                                <div class="tag-date">
+                                    <span>Dec 15, 2019</span>
+                                </div>
+                            </div>
+                            <div class="event__item__text">
+                                <h4>Happy music</h4>
+                                <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="event__item">
+                            <div class="event__item__pic set-bg" data-setbg="static/img/events/event-2.jpg">
+                                <div class="tag-date">
+                                    <span>Dec 15, 2019</span>
+                                </div>
+                            </div>
+                            <div class="event__item__text">
+                                <h4>Energetic music</h4>
+                                <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="event__item">
+                            <div class="event__item__pic set-bg" data-setbg="static/img/events/event-3.jpg">
+                                <div class="tag-date">
+                                    <span>Dec 15, 2019</span>
+                                </div>
+                            </div>
+                            <div class="event__item__text">
+                                <h4>Soothing music</h4>
+                                <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="event__item">
+                            <div class="event__item__pic set-bg" data-setbg="static/img/events/event-2.jpg">
+                                <div class="tag-date">
+                                    <span>Dec 15, 2019</span>
+                                </div>
+                            </div>
+                            <div class="event__item__text">
+                                <h4>Earworm</h4>
+                                <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Event Section End -->
+
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <img src="static/img/about/about.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <h2>DJ RKN</h2>
+                            <h1>About me</h1>
+                        </div>
+                        <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
+                            from the norm. As if this impressive succession of high impact, floor-filling bombs wasn’t
+                            enough to sustain.</p>
+                            
+                        <a href="/contact" class="primary-btn">CONTACT ME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Services Section Begin -->
+    <section class="services">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="services__left set-bg" data-setbg="static/img/services/service-left.jpg">
+                        <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="row services__list">
+                        <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
+                            <div class="service__item deep-bg">
+                                <img src="static/img/services/service-1.png" alt="">
+                                <h4>Disabled individual</h4>
+                                <p>benefit visually impaired individuals by recommending music based on emotional cues rather than visual facial expressions.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
+                            <div class="service__item">
+                                <img src="static/img/services/service-2.png" alt="">
+                                <h4>gaming</h4>
+                                <p>Adapts the in-game music to match player emotions and enhance immersion.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
+                            <div class="service__item deep-bg">
+                                <img src="static/img/services/service-4.png" alt="">
+                                <h4>Socail Media</h4>
+                                <p>Enhances posts and videos with mood-appropriate background music for engaging content</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
+                            <div class="service__item">
+                                <img src="static/img/services/service-left.jpg" alt="">
+                                <h4>Mental Health and Threapy</h4>
+                                <p> Utilizes music to support emotional well-being, relaxation, and therapy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- Track Section Begin -->
+    <section class="track spad">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-7">
+                    <div class="section-title">
+                        <h2>Latest tracks</h2>
+                        <h1>Music podcast</h1>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="track__all">
+                        <a href="#" class="primary-btn border-btn">View all tracks</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 p-0">
+                    <div class="track__content nice-scroll">
+                        <div class="single_player_container">
+                            <h4>Happy Music</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1"
+                                data-url="static/music-files/happy/1.mp3"></div>
+                            <div class="jp-audio jp_container_1" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_player_container">
+                            <h4>Energetic</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_2"
+                                data-url="static/music-files/2.mp3"></div>
+                            <div class="jp-audio jp_container_2" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_player_container">
+                            <h4>Romantic Tune</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_3"
+                                data-url="static/music-files/3.mp3"></div>
+                            <div class="jp-audio jp_container_3" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_player_container">
+                            <h4>Earworm</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_4"
+                                data-url="static/music-files/4.mp3"></div>
+                            <div class="jp-audio jp_container_4" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_player_container">
+                            <h4>Concert Tune</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_5"
+                                data-url="static/music-files/5.mp3"></div>
+                            <div class="jp-audio jp_container_5" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_player_container">
+                            <h4>Beats</h4>
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_6"
+                                data-url="static/music-files/6.mp3"></div>
+                            <div class="jp-audio jp_container_6" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 p-0">
+                    <div class="track__pic">
+                        <img src="static/img/track-right.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Track Section End -->
+
+    <!-- Youtube Section Begin -->
+    <section class="youtube spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Youtube feed</h2>
+                        <h1>Latest videos</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="youtube__item">
+                        <div class="youtube__item__pic set-bg" data-setbg="static/img/youtube/youtube-1.jpg">
+                            <a href="https://youtu.be/tklvr43FcZ4?si=mMRjWsDh9JU1K77u" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="youtube__item__text">
+                            <h4>Resham firiri</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="youtube__item">
+                        <div class="youtube__item__pic set-bg" data-setbg="static/img/youtube/youtube-2.jpg">
+                            <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="youtube__item__text">
+                            <h4>Martin Garrix (Full live-set) | SLAM!Koningsdag</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="youtube__item">
+                        <div class="youtube__item__pic set-bg" data-setbg="static/img/youtube/youtube-3.jpg">
+                            <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        </div>
+                        <div class="youtube__item__text">
+                            <h4>Dimitri Vegas, Steve Aoki & Like Mike’s “3 Are Legend”</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Youtube Section End -->
+
+    <!-- Countdown Section Begin -->
+    <section class="countdown spad set-bg" data-setbg="static/img/countdown-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="countdown__text">
+                        <h1 style="color:white">Beats</h1>
+                        
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="hero__text">
+                                                    
+                            
+    
+    
+                            <p> A fusion of sensory experiences through music, creating emotional resonance and connection.</p>
+                            <a href="https://youtu.be/4jP5r2b7hew?si=BvoKkSfX2okdU_qy"target="_blank" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Countdown Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad set-bg" data-setbg="static/img/footer-bg.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer__address">
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>9840434204</h6>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>Sentisymphonics@gmail.com</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 col-md-6">
+                    <div class="footer__social">
+                        <h2>Sentisymphonics</h2>
+                        <div class="footer__social__links">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer__newslatter">
+                        <h4>Stay With me</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.barfiller.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+
+
+    
+
+    <!-- Music Plugin -->
+    <script src="{{ url_for('static', filename='js/jquery.jplayer.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jplayerInit.js') }}"></script>
+    
+</body>
+
+</html>
