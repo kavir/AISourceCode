@@ -81,8 +81,7 @@
 
 <body>
     <section class="hero container text-center">
-        <h1 class="section-title">🎵 Sentisymphonics</h1>
-        <p class="lead">Emotion-Based Music Recommendation System</p>
+        <h1 class="section-title">🎵 Emotion-Based Music Recommendation System</h1>
 
         <div class="card-custom">
             <h3 class="mb-3">Detected Emotion</h3>
@@ -101,6 +100,13 @@
             </button>
             <div id="musicPlayer" style="display:none;">
                 <audio id="recommendedAudio" controls></audio>
+            </div>
+
+            <!-- 🔹 Feedback Section -->
+            <div id="feedbackSection" style="margin-top:15px; display:none;">
+                <h5>How was the recommendation?</h5>
+                <button class="btn btn-success" onclick="sendFeedback('like')">👍 Like</button>
+                <button class="btn btn-danger" onclick="sendFeedback('dislike')">👎 Dislike</button>
             </div>
         </div>
 
@@ -143,12 +149,54 @@
 
         function playMusicFromList(audioFiles) {
             document.getElementById("musicPlayer").style.display = "block";
+            document.getElementById("feedbackSection").style.display = "block"; // show feedback buttons
+
             const randomIndex = Math.floor(Math.random() * audioFiles.length);
             const audio = document.getElementById("recommendedAudio");
             audio.src = audioFiles[randomIndex];
             audio.play();
         }
 
+        // Feedback function
+        function sendFeedback(feedbackType) {
+            const detectedEmotion = document.getElementById("detected-emotion").innerText;
+            const currentSong = document.getElementById("recommendedAudio").src;
+
+            fetch('/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    emotion: detectedEmotion,
+                    feedback: feedbackType,
+                    song: currentSong   // store the song
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Feedback recorded: " + feedbackType);
+                })
+                .catch(error => console.error('Error sending feedback:', error));
+        }
+
+        // function sendFeedback(feedbackType) {
+        //     const detectedEmotion = document.getElementById("detected-emotion").innerText;
+
+        //     fetch('/feedback', {
+        //         method: 'POST',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify({
+        //             emotion: detectedEmotion,
+        //             feedback: feedbackType
+        //         })
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             alert("Feedback recorded: " + feedbackType);
+        //         })
+        //         .catch(error => console.error('Error sending feedback:', error));
+        // }
+
+        // Manual emotion testing
         function selectHappy() {
             alert("Do you want to play happy songs?");
             playMusicFromList([
@@ -156,6 +204,7 @@
                 "{{ url_for('static', filename='music-files/happy/2.mp3') }}",
                 "{{ url_for('static', filename='music-files/happy/3.mp3') }}"
             ]);
+            document.getElementById("detected-emotion").innerText = "Happy";
         }
 
         function selectSad() {
@@ -164,6 +213,7 @@
                 "{{ url_for('static', filename='music-files/sad/1.mp3') }}",
                 "{{ url_for('static', filename='music-files/sad/2.mp3') }}"
             ]);
+            document.getElementById("detected-emotion").innerText = "Sad";
         }
 
         function selectEnergetic() {
@@ -172,6 +222,7 @@
                 "{{ url_for('static', filename='music-files/happy/1.mp3') }}",
                 "{{ url_for('static', filename='music-files/happy/2.mp3') }}"
             ]);
+            document.getElementById("detected-emotion").innerText = "Energetic";
         }
 
         function selectCalm() {
@@ -181,6 +232,7 @@
                 "{{ url_for('static', filename='music-files/happy/2.mp3') }}",
                 "{{ url_for('static', filename='music-files/happy/3.mp3') }}"
             ]);
+            document.getElementById("detected-emotion").innerText = "Calm";
         }
     </script>
 </body>
